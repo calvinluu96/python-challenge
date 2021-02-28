@@ -1,5 +1,6 @@
 import os
 import csv
+import sys
 
 # If using relative path from main.py, use csvpath = os.path.join("..","Resources","budget_data.csv")
 # If using absolute path use csvpath = os.path.join("/Users/Calvin/DS_BootCamp/Homework 3/python-challenge/PyBank/Resources/budget_data.csv")
@@ -49,6 +50,8 @@ with open(csvpath) as csvfile:
 
     avg_change = total_change / num_months
 
+    # Output for terminal
+
     print("Financial Analysis")
     print("----------------------------")
     print("Total Months: ", num_months)
@@ -56,3 +59,17 @@ with open(csvpath) as csvfile:
     print("Average Change: $", avg_change)
     print("Greatest Increase in Profits: ", best_month, " ($", max_increase, ")")
     print("Greatest Decrease in Profits: ", worst_month, " ($", max_decrease, ")")
+
+    # Output for text file
+
+    sys.stdout = open("budget_analysis.txt", "w")
+    
+    print("Financial Analysis")
+    print("----------------------------")
+    print("Total Months: ", num_months)
+    print("Total: $", total_money)
+    print("Average Change: $", avg_change)
+    print("Greatest Increase in Profits: ", best_month, " ($", max_increase, ")")
+    print("Greatest Decrease in Profits: ", worst_month, " ($", max_decrease, ")")
+     
+    sys.stdout.close()
